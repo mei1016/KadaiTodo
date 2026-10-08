@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <style>
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+
+        .login-box {
+            width: 320px;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="font-weight: normal; margin-bottom: 20px;">ログイン</h1>
+
+    <div class="login-box">
+
+        <!-- ログインできない場合 -->
+        <p th:if="${error}" style="color: red; font-size: 14px;" th:text="${error}"></p>
+
+		
+        <form th:action="@{/login}" method="post">
+
+            <div class="form-group">
+                <label for="username">ユーザー名</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="login-btn">ログイン</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
